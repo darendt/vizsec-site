@@ -53,7 +53,7 @@ vows.describe('time-span/date-time').addBatch({
             var now = new Date(Date.now()),
                 parsed = timeSpan.parseDate('NOW-2HOURS');
             
-            now.setHours(now.getHours() - 2 - (now.getTimezoneOffset() / 60));
+            now.setHours(now.getHours() - 2);
             assert.equal(now.getHours(), parsed.getHours());
           }
         },
@@ -62,7 +62,7 @@ vows.describe('time-span/date-time').addBatch({
             var now = new Date(Date.now()),
                 parsed = timeSpan.parseDate('NOW-72HOURS');
 
-            now.setHours(now.getHours() - 72 - (now.getTimezoneOffset() / 60));
+            now.setHours(now.getHours() - 72);
             assert.equal(now.getHours(), parsed.getHours());
           }
         }

@@ -332,6 +332,10 @@ exports.parseDate = function (str) {
     dateTime = Date.now();
     zulu = zulu.replace(/Z/, 'NOW');
   }
+  else if (/^\-/.test(str) || /^\+/.test(str)) {
+    dateTime = Date.now();
+    zulu = zulu.replace(/Z/, '');
+  }
   else {
     //
     // Parse the `ISO8601` component, and the end
@@ -395,15 +399,13 @@ exports.parseDate = function (str) {
   });
   
   return new Date(
-    Date.UTC(
-      computed.years,
-      computed.months,
-      computed.days,
-      computed.hours,
-      computed.minutes,
-      computed.seconds,
-      computed.milliseconds
-    )
+    computed.years,
+    computed.months,
+    computed.days,
+    computed.hours,
+    computed.minutes,
+    computed.seconds,
+    computed.milliseconds
   );
 };
 
